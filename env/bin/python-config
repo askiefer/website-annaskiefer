@@ -1,4 +1,4 @@
-#!/Users/akiefer/Desktop/hackbright/personal-website/startbootstrap-agency/env/bin/python
+#!/Users/akiefer/Desktop/hackbright/personal-website/env/bin/python
 
 import sys
 import getopt
