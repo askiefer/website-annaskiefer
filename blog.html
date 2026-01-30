@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/img/person.png">
+    <title>Blog - Anna S. Kiefer</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/agency.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Anna S. Kiefer</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html#about">About</a>
+                    </li>
+                    <li>
+                        <a href="index.html#cv">CV</a>
+                    </li>
+                    <li>
+                        <a href="blog.html">Blog</a>
+                    </li>
+                    <li>
+                        <a href="index.html#connect">Connect</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <section id="blog-header" style="padding-top: 150px; padding-bottom: 50px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Blog</h2>
+                    <h3 class="section-subheading text-muted">Thoughts and articles.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section id="blog-posts" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+
+                    <div id="medium-posts">
+                        <p class="text-center text-muted">Loading articles...</p>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 30px;">
+                        <a href="https://medium.com/@askiefer" target="_blank" class="btn btn-primary">View all on Medium</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Fetch Medium RSS feed via rss2json API
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@askiefer')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('medium-posts');
+
+                if (data.status === 'ok' && data.items.length > 0) {
+                    let html = '';
+                    data.items.forEach(item => {
+                        const date = new Date(item.pubDate).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+
+                        // Extract first image from content if available
+                        const imgMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
+                        const thumbnail = imgMatch ? imgMatch[1] : null;
+
+                        // Strip HTML tags for description
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = item.description;
+                        const description = tempDiv.textContent.substring(0, 200) + '...';
+
+                        html += `
+                            <article class="blog-post" style="margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid #ddd;">
+                                ${thumbnail ? `<img src="${thumbnail}" alt="${item.title}" style="width: 100%; max-height: 300px; object-fit: cover; margin-bottom: 20px;">` : ''}
+                                <h3><a href="${item.link}" target="_blank" style="color: #333;">${item.title}</a></h3>
+                                <p class="text-muted"><small>${date}</small></p>
+                                <p>${description}</p>
+                                <a href="${item.link}" target="_blank">Read more</a>
+                            </article>
+                        `;
+                    });
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = '<p class="text-center text-muted">No articles found.</p>';
+                }
+            })
+            .catch(error => {
+                document.getElementById('medium-posts').innerHTML =
+                    '<p class="text-center text-muted">Unable to load articles. <a href="https://medium.com/@askiefer" target="_blank">View on Medium</a></p>';
+            });
+    </script>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+</body>
+
+</html>
