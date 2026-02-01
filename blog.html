@@ -17,6 +17,9 @@
     <!-- Custom CSS -->
     <link href="css/agency.css" rel="stylesheet">
 
+    <!-- 90s Geocities Retro Theme -->
+    <link href="css/geocities.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -65,8 +68,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Blog</h2>
+                    <h2 class="section-heading"><span class="sparkle">*</span> Blog <span class="sparkle">*</span></h2>
                     <h3 class="section-subheading text-muted">Thoughts and musings.</h3>
+                    <div class="rainbow-divider"></div>
                 </div>
             </div>
         </div>
@@ -90,6 +94,34 @@
             </div>
         </div>
     </section>
+
+    <!-- Retro Footer -->
+    <footer class="retro-footer">
+        <div class="container">
+            <!-- Visitor Counter -->
+            <div class="visitor-counter">
+                <div class="visitor-counter-label">You are visitor number:</div>
+                <div class="visitor-counter-number">001337</div>
+            </div>
+
+            <div class="rainbow-divider"></div>
+
+            <!-- Browser Badges -->
+            <div class="browser-badges">
+                <span class="browser-badge">Best viewed with Netscape Navigator 4.0</span>
+                <span class="browser-badge">800x600 resolution</span>
+            </div>
+
+            <!-- Back to Home -->
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="guestbook-btn"><< Back to Homepage</a>
+            </div>
+
+            <p style="margin-top: 20px; font-size: 12px; color: #00ffff;">
+                Copyright 1999-2024 Anna S. Kiefer. All rights reserved.
+            </p>
+        </div>
+    </footer>
 
     <script>
         // Fetch Medium RSS feed via rss2json API
@@ -116,13 +148,19 @@
                         tempDiv.innerHTML = item.description;
                         const description = tempDiv.textContent.substring(0, 200) + '...';
 
+                        // Check if post is from the last 30 days
+                        const postDate = new Date(item.pubDate);
+                        const thirtyDaysAgo = new Date();
+                        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+                        const isNew = postDate > thirtyDaysAgo;
+
                         html += `
-                            <article class="blog-post" style="margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid #ddd;">
-                                ${thumbnail ? `<img src="${thumbnail}" alt="${item.title}" style="width: 100%; max-height: 300px; object-fit: cover; margin-bottom: 20px;">` : ''}
-                                <h3><a href="${item.link}" target="_blank" style="color: #333;">${item.title}</a></h3>
+                            <article class="blog-post">
+                                ${thumbnail ? `<img src="${thumbnail}" alt="${item.title}" style="width: 100%; max-height: 300px; object-fit: cover; margin-bottom: 20px; border: 3px ridge #c0c0c0;">` : ''}
+                                <h3><a href="${item.link}" target="_blank">${item.title}</a>${isNew ? '<span class="new-badge">NEW!</span>' : ''}</h3>
                                 <p class="text-muted"><small>${date}</small></p>
                                 <p>${description}</p>
-                                <a href="${item.link}" target="_blank">Read more</a>
+                                <a href="${item.link}" target="_blank">Read more >></a>
                             </article>
                         `;
                     });

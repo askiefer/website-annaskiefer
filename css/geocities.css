@@ -1,0 +1,670 @@
+/*
+ * Geocities 90s Retro Theme
+ * A nostalgic tribute to the golden age of the web
+ */
+
+/* ============================================
+   CSS Animations
+   ============================================ */
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes rainbow {
+  0% { color: #ff0000; }
+  17% { color: #ff8000; }
+  33% { color: #ffd700; }
+  50% { color: #00ff00; }
+  67% { color: #00ffff; }
+  83% { color: #8000ff; }
+  100% { color: #ff0000; }
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
+  50% { text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; }
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-content {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   Base Styles & Background
+   ============================================ */
+
+body {
+  background-color: #000080 !important;
+  background-image:
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+  background-size: 550px 550px, 350px 350px, 250px 250px;
+  background-position: 0 0, 40px 60px, 130px 270px;
+  font-family: "Times New Roman", Times, serif !important;
+  color: #ffffff;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6,
+.section-heading,
+.cv-section-heading,
+.navbar-brand {
+  font-family: "Impact", "Arial Black", Haettenschweiler, sans-serif !important;
+  text-transform: none !important;
+}
+
+h2.section-heading {
+  color: #ffff00 !important;
+  text-shadow:
+    2px 2px 0 #ff00ff,
+    -1px -1px 0 #00ffff,
+    0 0 20px #ff00ff;
+  animation: glow 3s ease-in-out infinite;
+}
+
+h3.section-subheading {
+  color: #00ffff !important;
+  font-family: "Times New Roman", Times, serif !important;
+  font-style: italic;
+}
+
+p, .text-muted {
+  color: #e0e0e0 !important;
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+/* ============================================
+   Links - Classic Web Style
+   ============================================ */
+
+a {
+  color: #00ffff !important;
+  text-decoration: underline !important;
+}
+
+a:visited {
+  color: #cc99ff !important;
+}
+
+a:hover {
+  color: #ff00ff !important;
+  text-decoration: underline !important;
+}
+
+/* ============================================
+   Navigation - Windows 95 Toolbar Style
+   ============================================ */
+
+.navbar-default {
+  background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%) !important;
+  border: none !important;
+  border-bottom: 3px outset #ffffff !important;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040;
+}
+
+.navbar-default.navbar-shrink {
+  background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%) !important;
+}
+
+.navbar-default .navbar-brand {
+  color: #000080 !important;
+  font-family: "Impact", "Arial Black", sans-serif !important;
+  text-shadow: 1px 1px 0 #ffffff;
+}
+
+.navbar-default .nav li a {
+  color: #000000 !important;
+  font-family: "MS Sans Serif", "Segoe UI", Tahoma, sans-serif !important;
+  text-transform: none !important;
+  background: #c0c0c0;
+  border: 2px outset #ffffff;
+  margin: 2px 4px;
+  padding: 6px 12px !important;
+}
+
+.navbar-default .nav li a:hover {
+  background: #a0a0a0 !important;
+  border: 2px inset #808080;
+  color: #000000 !important;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover {
+  background: #000080 !important;
+  color: #ffffff !important;
+  border: 2px inset #404040;
+}
+
+/* Mobile nav toggle */
+.navbar-default .navbar-toggle {
+  background: #c0c0c0 !important;
+  border: 2px outset #ffffff !important;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #000080 !important;
+}
+
+/* ============================================
+   Header Section
+   ============================================ */
+
+header {
+  background: #000080 !important;
+  background-image:
+    radial-gradient(white, rgba(255,255,255,.3) 2px, transparent 3px),
+    radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 2px) !important;
+  background-size: 100px 100px, 50px 50px !important;
+  position: relative;
+}
+
+header .intro-text .intro-lead-in {
+  font-family: "Impact", "Arial Black", sans-serif !important;
+  color: #00ffff !important;
+  font-style: normal !important;
+  font-size: 28px !important;
+  text-shadow: 2px 2px 0 #000000;
+}
+
+header .intro-text .intro-heading {
+  font-family: "Impact", "Arial Black", sans-serif !important;
+  color: #ffff00 !important;
+  text-shadow:
+    3px 3px 0 #ff0000,
+    -2px -2px 0 #00ff00;
+  animation: glow 2s ease-in-out infinite;
+}
+
+header .btn {
+  color: #4b0082 !important;
+  font-weight: bold;
+}
+
+/* ============================================
+   Buttons - Windows 95 3D Style
+   ============================================ */
+
+.btn,
+.btn-primary,
+.btn-lg,
+.btn-xl {
+  font-family: "MS Sans Serif", Tahoma, sans-serif !important;
+  text-transform: none !important;
+  background: #c0c0c0 !important;
+  color: #000000 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow:
+    inset -1px -1px 0 #404040,
+    inset 1px 1px 0 #ffffff,
+    inset -2px -2px 0 #808080,
+    inset 2px 2px 0 #dfdfdf;
+  padding: 8px 16px !important;
+  text-decoration: none !important;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-lg:hover,
+.btn-xl:hover {
+  background: #a0a0a0 !important;
+  color: #000000 !important;
+  box-shadow:
+    inset 1px 1px 0 #404040,
+    inset -1px -1px 0 #ffffff,
+    inset 2px 2px 0 #808080,
+    inset -2px -2px 0 #dfdfdf;
+}
+
+.btn:active,
+.btn-primary:active {
+  box-shadow:
+    inset 2px 2px 0 #404040,
+    inset -2px -2px 0 #dfdfdf;
+}
+
+/* ============================================
+   Sections
+   ============================================ */
+
+section {
+  background-color: #000080;
+}
+
+section#about {
+  background: linear-gradient(180deg, #1a0033 0%, #2a0050 50%, #1a0033 100%);
+  border-top: 4px ridge #c0c0c0;
+  border-bottom: 4px ridge #c0c0c0;
+}
+
+section#about p {
+  font-size: 18px !important;
+  line-height: 1.8;
+}
+
+section#about h3.section-subheading {
+  font-size: 24px !important;
+}
+
+section#cv,
+section.bg-light-gray,
+#blog-posts.bg-light-gray {
+  background: linear-gradient(180deg, #003333 0%, #004444 50%, #003333 100%) !important;
+  border-top: 4px groove #ffd700;
+  border-bottom: 4px groove #ffd700;
+}
+
+section#connect {
+  background: #ffffff;
+}
+
+section#connect h2.section-heading {
+  color: #000080 !important;
+  text-shadow: 2px 2px 0 #c0c0c0;
+}
+
+section#connect h3.section-subheading {
+  color: #333333 !important;
+}
+
+section#connect .rainbow-divider {
+  margin: 20px auto;
+  width: 80%;
+}
+
+/* ============================================
+   CV Section Specific Styles
+   ============================================ */
+
+.cv-section-heading {
+  color: #ffd700 !important;
+  border-bottom: 2px dashed #ff00ff !important;
+  font-family: "Impact", "Arial Black", sans-serif !important;
+  padding-left: 30px;
+  position: relative;
+}
+
+.cv-section-heading::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: #00ff00;
+  animation: blink 1s infinite;
+}
+
+.cv-item {
+  background: #5a5a5a;
+  border: 2px inset #808080;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.cv-item .cv-title {
+  color: #00ffff !important;
+}
+
+.cv-item .cv-title strong {
+  color: #ffd700 !important;
+}
+
+/* ============================================
+   Team Member / About Section
+   ============================================ */
+
+.team-member img {
+  border: 5px ridge #ffd700 !important;
+  box-shadow: 0 0 20px #ff00ff;
+  width: 300px !important;
+  height: 300px !important;
+  object-fit: cover;
+  border-radius: 50% !important;
+}
+
+/* ============================================
+   Social Buttons
+   ============================================ */
+
+ul.social-buttons li a {
+  background: linear-gradient(180deg, #000080 0%, #000066 100%) !important;
+  color: #ffffff !important;
+  border-radius: 0 !important;
+  box-shadow:
+    inset -1px -1px 0 #404040,
+    inset 1px 1px 0 #6060ff,
+    inset -2px -2px 0 #000040,
+    inset 2px 2px 0 #4040c0;
+}
+
+ul.social-buttons li a:hover {
+  background: linear-gradient(180deg, #ffd700 0%, #ffa500 100%) !important;
+  box-shadow:
+    inset 1px 1px 0 #404040,
+    inset -1px -1px 0 #ffffff;
+}
+
+ul.social-buttons li a i {
+  color: #ffffff;
+}
+
+ul.social-buttons li a:hover i {
+  color: #000080;
+}
+
+/* ============================================
+   Marquee Banner
+   ============================================ */
+
+.retro-marquee {
+  background: linear-gradient(90deg, #ff0000, #ff8000, #ffd700, #00ff00, #00ffff, #8000ff, #ff00ff);
+  background-size: 400% 100%;
+  animation: rainbow-bg 3s linear infinite;
+  padding: 10px 0;
+  overflow: hidden;
+  border-top: 3px ridge #ffffff;
+  border-bottom: 3px ridge #ffffff;
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  z-index: 999;
+}
+
+@keyframes rainbow-bg {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee-scroll 15s linear infinite;
+  font-family: "Impact", "Arial Black", sans-serif;
+  font-size: 18px;
+  color: #000000;
+  text-shadow: 1px 1px 0 #ffffff;
+  font-weight: bold;
+}
+
+/* Adjust header for marquee */
+body.has-marquee header {
+  margin-top: 40px;
+}
+
+/* ============================================
+   Rainbow Divider
+   ============================================ */
+
+.rainbow-divider {
+  height: 8px;
+  background: linear-gradient(90deg,
+    #ff0000 0%,
+    #ff8000 17%,
+    #ffd700 33%,
+    #00ff00 50%,
+    #00ffff 67%,
+    #0080ff 83%,
+    #ff00ff 100%
+  );
+  margin: 20px 0;
+  border: 2px outset #ffffff;
+}
+
+/* ============================================
+   Sparkle Decorations (CSS-based)
+   ============================================ */
+
+.sparkle {
+  display: inline-block;
+  color: #ffd700;
+  animation: sparkle 1s ease-in-out infinite;
+  text-shadow: 0 0 10px #ffd700;
+}
+
+.sparkle:nth-child(odd) {
+  animation-delay: 0.5s;
+}
+
+/* ============================================
+   Retro Footer
+   ============================================ */
+
+.retro-footer {
+  background: #220011;
+  border-top: 4px ridge #c0c0c0;
+  padding: 30px 0;
+  text-align: center;
+  font-family: "Impact", "Arial Black", sans-serif;
+}
+
+.visitor-counter {
+  background: #000000;
+  border: 3px inset #808080;
+  padding: 10px 20px;
+  display: inline-block;
+  margin: 15px 0;
+}
+
+.visitor-counter-label {
+  color: #00ff00;
+  font-size: 12px;
+}
+
+.visitor-counter-number {
+  font-family: "Courier New", monospace;
+  color: #00ff00;
+  font-size: 24px;
+  letter-spacing: 3px;
+  background: #001100;
+  padding: 5px 10px;
+  border: 1px inset #004400;
+}
+
+.browser-badges {
+  margin: 20px 0;
+}
+
+.browser-badges img,
+.browser-badge {
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+/* CSS-based browser badge */
+.browser-badge {
+  display: inline-block;
+  background: linear-gradient(180deg, #c0c0c0, #808080);
+  border: 2px outset #ffffff;
+  padding: 5px 10px;
+  font-size: 11px;
+  color: #000000;
+  font-family: "MS Sans Serif", sans-serif;
+}
+
+.webring {
+  margin: 20px 0;
+  padding: 15px;
+  border: 3px double #ffd700;
+  background: rgba(0, 0, 100, 0.5);
+}
+
+.webring-title {
+  color: #ff00ff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.webring a {
+  margin: 0 15px;
+  color: #00ffff !important;
+}
+
+.guestbook-btn {
+  display: inline-block;
+  background: linear-gradient(180deg, #ffd700, #ff8c00);
+  color: #000000 !important;
+  text-decoration: none !important;
+  padding: 10px 20px;
+  border: 3px outset #ffd700;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.guestbook-btn:hover {
+  border: 3px inset #ff8c00;
+  background: linear-gradient(180deg, #ff8c00, #ffd700);
+}
+
+/* ============================================
+   Blog-specific styles
+   ============================================ */
+
+.blog-post {
+  background: rgba(25, 25, 112, 0.8) !important;
+  border: 3px ridge #c0c0c0 !important;
+  padding: 20px !important;
+  margin-bottom: 30px !important;
+}
+
+.blog-post h3 a {
+  color: #ffd700 !important;
+  text-decoration: none !important;
+}
+
+.blog-post h3 a:hover {
+  color: #ff00ff !important;
+  text-decoration: underline !important;
+}
+
+/* NEW badge for recent posts */
+.new-badge {
+  display: inline-block;
+  background: #ff0000;
+  color: #ffd700 !important;
+  font-size: 10px;
+  padding: 2px 6px;
+  margin-left: 10px;
+  animation: blink 0.8s infinite;
+  font-family: "MS Sans Serif", sans-serif;
+  vertical-align: super;
+}
+
+/* ============================================
+   Blink effect (used sparingly)
+   ============================================ */
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ============================================
+   "Under Construction" section
+   ============================================ */
+
+.under-construction {
+  text-align: center;
+  padding: 20px;
+  background: repeating-linear-gradient(
+    45deg,
+    #ffd700,
+    #ffd700 10px,
+    #000000 10px,
+    #000000 20px
+  );
+  border: 3px ridge #808080;
+}
+
+.under-construction-text {
+  background: #ff0000;
+  color: #ffd700;
+  padding: 10px 20px;
+  display: inline-block;
+  font-family: "Impact", "Arial Black", sans-serif;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+/* ============================================
+   Responsive adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+  .retro-marquee {
+    top: 50px;
+  }
+
+  .navbar-default .nav li a {
+    margin: 2px;
+    font-size: 12px;
+  }
+
+  h2.section-heading {
+    font-size: 28px !important;
+  }
+
+  .visitor-counter-number {
+    font-size: 18px;
+  }
+}
+
+/* ============================================
+   Section Icons (CSS-based)
+   ============================================ */
+
+.section-icon {
+  font-size: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.section-icon.education::before {
+  content: "[Grad Cap]";
+  color: #ffd700;
+}
+
+.section-icon.experience::before {
+  content: "[Briefcase]";
+  color: #ffd700;
+}
+
+.section-icon.consulting::before {
+  content: "[Computer]";
+  color: #ffd700;
+}
+
+/* Using Font Awesome icons when available */
+.cv-section-heading .fa {
+  color: #ffd700;
+  margin-right: 10px;
+  animation: sparkle 2s ease-in-out infinite;
+}
