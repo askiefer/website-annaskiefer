@@ -549,21 +549,72 @@ body.has-marquee header {
    Blog-specific styles
    ============================================ */
 
+.blog-scroll-container {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 10px;
+  /* Retro scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #c0c0c0 #404040;
+}
+
+.blog-scroll-container::-webkit-scrollbar {
+  width: 16px;
+}
+
+.blog-scroll-container::-webkit-scrollbar-track {
+  background: #404040;
+  border: 2px inset #808080;
+}
+
+.blog-scroll-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c0c0c0, #808080);
+  border: 2px outset #c0c0c0;
+}
+
+.blog-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d0d0d0, #909090);
+}
+
+.blog-scroll-container::-webkit-scrollbar-button {
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  height: 16px;
+}
+
+.blog-scroll-container::-webkit-scrollbar-button:hover {
+  background: #a0a0a0;
+  border: 2px inset #808080;
+}
+
 .blog-post {
-  background: rgba(25, 25, 112, 0.8) !important;
+  background: #ffffff !important;
   border: 3px ridge #c0c0c0 !important;
   padding: 20px !important;
   margin-bottom: 30px !important;
 }
 
+.blog-post p,
+.blog-post .text-muted {
+  color: #333333 !important;
+}
+
 .blog-post h3 a {
-  color: #ffd700 !important;
+  color: #000080 !important;
   text-decoration: none !important;
 }
 
 .blog-post h3 a:hover {
   color: #ff00ff !important;
   text-decoration: underline !important;
+}
+
+.blog-post a {
+  color: #000080 !important;
+}
+
+.blog-post a:hover {
+  color: #ff00ff !important;
 }
 
 /* NEW badge for recent posts */
