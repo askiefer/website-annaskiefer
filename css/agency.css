@@ -744,25 +744,3 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #a9a9a9;
 }
-
-/* CV Section Styles */
-.cv-section-heading {
-  margin-top: 30px;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #a9a9a9;
-  text-transform: uppercase;
-}
-.cv-section-heading:first-child {
-  margin-top: 0;
-}
-.cv-item {
-  margin-bottom: 20px;
-}
-.cv-item .cv-title {
-  margin-bottom: 5px;
-  font-size: 15px;
-}
-.cv-item .text-muted {
-  margin-top: 0;
-}
