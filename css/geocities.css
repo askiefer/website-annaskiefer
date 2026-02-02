@@ -391,12 +391,12 @@ ul.social-buttons li a:hover i {
   background: linear-gradient(90deg, #ff0000, #ff8000, #ffd700, #00ff00, #00ffff, #8000ff, #ff00ff);
   background-size: 400% 100%;
   animation: rainbow-bg 3s linear infinite;
-  padding: 10px 0;
+  padding: 8px 0;
   overflow: hidden;
   border-top: 3px ridge #ffffff;
   border-bottom: 3px ridge #ffffff;
   position: fixed;
-  top: 54px;
+  top: 42px;
   width: 100%;
   z-index: 1040;
 }
@@ -419,7 +419,7 @@ ul.social-buttons li a:hover i {
 
 /* Adjust header for marquee */
 body.has-marquee header {
-  margin-top: 46px;
+  margin-top: 38px;
 }
 
 /* ============================================
