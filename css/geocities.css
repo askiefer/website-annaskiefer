@@ -396,7 +396,7 @@ ul.social-buttons li a:hover i {
   border-top: 3px ridge #ffffff;
   border-bottom: 3px ridge #ffffff;
   position: fixed;
-  top: 42px;
+  top: 52px;
   width: 100%;
   z-index: 1040;
 }
@@ -419,7 +419,7 @@ ul.social-buttons li a:hover i {
 
 /* Adjust header for marquee */
 body.has-marquee header {
-  margin-top: 38px;
+  margin-top: 44px;
 }
 
 /* ============================================
