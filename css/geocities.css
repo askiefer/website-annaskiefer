@@ -132,6 +132,7 @@ a:hover {
   box-shadow:
     inset 1px 1px 0 #ffffff,
     inset -1px -1px 0 #404040;
+  z-index: 1050 !important;
 }
 
 .navbar-default.navbar-shrink {
